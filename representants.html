@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Representants de la Falla Ramiro de Maeztu - Els Lleons. Exercici 2025/2026."/>
+  <title>Representants · Falla Ramiro de Maeztu · Els Lleons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;z-index:1000;background:rgba(7,6,10,.95);display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .lightbox.open{opacity:1;pointer-events:all}
+    .lightbox img{max-width:100%;max-height:85vh;border-radius:12px;object-fit:contain;box-shadow:0 0 80px rgba(0,0,0,.8)}
+    .lightbox-close{position:absolute;top:24px;right:28px;background:none;border:1px solid var(--border-accent);color:var(--text-secondary);width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease}
+    .lightbox-close:hover{color:var(--fire-gold);border-color:var(--fire-gold)}
+    .lightbox-caption{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--font-heading);font-size:.9rem;letter-spacing:.08em;color:var(--text-secondary);text-align:center;white-space:nowrap}
+    .rep-card{cursor:pointer}
+    /* Honours strip */
+    .honours-strip{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+    .honour-pill{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--bg-card);border:1px solid var(--border-accent);border-radius:100px;font-family:var(--font-heading);font-size:.85rem;letter-spacing:.06em;color:var(--fire-gold)}
+    .honour-pill svg{color:var(--fire-bright);flex-shrink:0}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Els Lleons"/>
+    <div class="nav-logo-text"><strong>Els Lleons</strong>Ramiro de Maeztu</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+    <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+    <li><a href="activitats.html">Activitats</a></li><li><a href="contacto.html">Contacte</a></li>
+    <li><a href="apuntat.html" class="nav-cta">Apunta't</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Inici</a><a href="historia.html">Història</a>
+  <a href="representants.html">Representants</a><a href="noticies.html">Notícies</a>
+  <a href="activitats.html">Activitats</a><a href="contacto.html">Contacte</a>
+  <a href="apuntat.html" class="nav-cta">Apunta't</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Exercici 2025 / 2026</div>
+    <h1 class="page-hero-title">Els nostres <span class="fire-text">Representants</span></h1>
+    <p class="page-hero-desc">Quatre persones que representen l'orgull, la il·lusió i la tradició de la nostra comissió durant tot l'exercici faller.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="gsap-reveal" style="text-align:center;margin-bottom:56px">
+      <div class="section-label" style="justify-content:center;display:flex">Cort d'Honor</div>
+      <div class="title-line" style="margin:16px auto"></div>
+      <h2 class="section-title">La representació de <span class="accent">Els Lleons</span></h2>
+    </div>
+
+    <div class="reps-grid gsap-stagger">
+
+      <div class="rep-card gsap-stagger-item" data-name="Iker Castañeda" data-role="President Infantil 2026" data-img="img/representant1-BqopNsqQ.jpg">
+        <div class="rep-card-img">
+          <img src="img/representant1-BqopNsqQ.jpg" alt="Iker Castañeda P.I 2026" loading="lazy"/>
+        </div>
+        <div class="rep-card-body">
+          <div class="rep-card-role">President Infantil</div>
+          <div class="rep-card-name">Iker Castañeda</div>
+          <div class="rep-card-year">Exercici 2025 / 2026</div>
+        </div>
+      </div>
+
+      <div class="rep-card gsap-stagger-item" data-name="Paula Ferrer" data-role="Fallera Major 2026" data-img="img/representant2-BEAI8d4g.jpg">
+        <div class="rep-card-img">
+          <img src="img/representant2-BEAI8d4g.jpg" alt="Paula Ferrer F.M 2026" loading="lazy"/>
+        </div>
+        <div class="rep-card-body">
+          <div class="rep-card-role">Fallera Major</div>
+          <div class="rep-card-name">Paula Ferrer</div>
+          <div class="rep-card-year">Exercici 2025 / 2026</div>
+        </div>
+      </div>
+
+      <div class="rep-card gsap-stagger-item" data-name="Rafael Moreno" data-role="President 2026" data-img="img/representant3-C9r47aCD.jpg">
+        <div class="rep-card-img">
+          <img src="img/representant3-C9r47aCD.jpg" alt="Rafael Moreno President" loading="lazy"/>
+        </div>
+        <div class="rep-card-body">
+          <div class="rep-card-role">President</div>
+          <div class="rep-card-name">Rafael Moreno Ripoll</div>
+          <div class="rep-card-year">Exercici 2025 / 2026</div>
+        </div>
+      </div>
+
+      <div class="rep-card gsap-stagger-item" data-name="Irene Moliner" data-role="Fallera Major Infantil 2026" data-img="img/representant4-9a56hFQj.jpg">
+        <div class="rep-card-img">
+          <img src="img/representant4-9a56hFQj.jpg" alt="Irene Moliner FMI 2026" loading="lazy"/>
+        </div>
+        <div class="rep-card-body">
+          <div class="rep-card-role">Fallera Major Infantil</div>
+          <div class="rep-card-name">Irene Moliner</div>
+          <div class="rep-card-year">Exercici 2025 / 2026</div>
+        </div>
+      </div>
+
+    </div></div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Tancar">✕</button>
+  <img src="" alt="" id="lightboxImg"/>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo-BKOypUWz.png" alt="Escudo"/>
+        <div class="footer-brand-name">Falla Ramiro de Maeztu · Els Lleons</div>
+        <div class="footer-brand-sub">Fundada en 1963 · València</div>
+        <p class="footer-brand-desc">Una de les comissions falleres amb més tradició i prestigi de la demarcació de València.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="mailto:fallarmaeztuleones@gmail.com" class="social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-nav-title">Navegació</div>
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+          <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+          <li><a href="activitats.html">Activitats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-title">Contacte</div>
+        <ul class="footer-nav-links">
+          <li><a href="apuntat.html">Apunta't</a></li><li><a href="contacto.html">Contacte</a></li>
+          <li><a href="mailto:fallarmaeztuleones@gmail.com">fallarmaeztuleones@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Falla Ramiro de Maeztu - Els Lleons. Tots els drets reservats.</div>
+      <div class="footer-sponsors">
+        <span class="footer-sponsor-label">Amb el suport de</span>
+        <div class="footer-sponsor-logos">
+           <img src="img/ajuntament-BGm3J81t.png" alt="Ajuntament de València">
+          <img src="img/diputacio-DWRY4cS8.jpg" alt="Diputació de València">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Lightbox per als representants
+(function(){
+  const lb      = document.getElementById('lightbox');
+  const lbImg   = document.getElementById('lightboxImg');
+  const lbCap   = document.getElementById('lightboxCaption');
+  const lbClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.rep-card').forEach(card => {
+    card.addEventListener('click', () => {
+      lbImg.src = card.dataset.img;
+      lbImg.alt = card.dataset.name;
+      lbCap.textContent = card.dataset.name + ' · ' + card.dataset.role;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lbClose.addEventListener('click', close);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

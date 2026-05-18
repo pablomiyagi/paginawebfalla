@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Activitats de la Falla Ramiro de Maeztu - Els Lleons. Festes temàtiques, teatre, esport, ball i molt més durant tot l'any."/>
+  <title>Activitats · Falla Ramiro de Maeztu · Els Lleons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    /* Poster lightbox */
+    .lightbox{position:fixed;inset:0;z-index:1000;background:rgba(7,6,10,.96);display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .lightbox.open{opacity:1;pointer-events:all}
+    .lightbox img{max-width:100%;max-height:88vh;border-radius:12px;object-fit:contain}
+    .lightbox-close{position:absolute;top:24px;right:28px;background:none;border:1px solid var(--border-accent);color:var(--text-secondary);width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s}
+    .lightbox-close:hover{color:var(--fire-gold);border-color:var(--fire-gold)}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Els Lleons"/>
+    <div class="nav-logo-text"><strong>Els Lleons</strong>Ramiro de Maeztu</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+    <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+    <li><a href="activitats.html">Activitats</a></li><li><a href="contacto.html">Contacte</a></li>
+    <li><a href="apuntat.html" class="nav-cta">Apunta't</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Inici</a><a href="historia.html">Història</a>
+  <a href="representants.html">Representants</a><a href="noticies.html">Notícies</a>
+  <a href="activitats.html">Activitats</a><a href="contacto.html">Contacte</a>
+  <a href="apuntat.html" class="nav-cta">Apunta't</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Tot l'any</div>
+    <h1 class="page-hero-title">Les nostres <span class="fire-text">Activitats</span></h1>
+    <p class="page-hero-desc">Activitats durant tot l'any. Si estàs interessat en qualsevol d'elles, posa't en contacte amb la falla per a informar-te i fer falla.</p>
+  </div>
+</div>
+
+<section style="background:var(--bg-surface);border-top:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="gsap-reveal" style="margin-bottom:48px">
+      <div class="section-label">Cartells d'Esdeveniments</div>
+      <div class="title-line"></div>
+      <h2 class="section-title">Els nostres <span class="accent">events</span></h2>
+      <p class="section-desc">Una selecció dels cartells dels nostres esdeveniments més recents. Fes clic per ampliar.</p>
+    </div>
+
+    <div class="poster-grid gsap-stagger">
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-mexico-lindo-BVsmsUn7.jpg" data-alt="Vuelve México Lindo">
+        <img src="img/cartell-mexico-lindo-BVsmsUn7.jpg" alt="Cartell Vuelve México Lindo" loading="lazy"/>
+      </div>
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-ismael-galan-DVWjwDCj.jpg" data-alt="Tarde de Monólogo amb Ismael Galán">
+        <img src="img/cartell-ismael-galan-DVWjwDCj.jpg" alt="Cartell Tarde de Monólogo" loading="lazy"/>
+      </div>
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-poca-aventura-i8W1Ms-k.jpg" data-alt="Poca Aventura — Teatro a pie de falla">
+        <img src="img/cartell-poca-aventura-i8W1Ms-k.jpg" alt="Cartell Poca Aventura" loading="lazy"/>
+      </div>
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-cine-infantil-DdpXrDSe.jpg" data-alt="Cine Infantil y Juvenil">
+        <img src="img/cartell-cine-infantil-DdpXrDSe.jpg" alt="Cartell Cine Infantil" loading="lazy"/>
+      </div>
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-halloween-BoUGxqUG.jpg" data-alt="Fiesta de Halloween">
+        <img src="img/cartell-halloween-BoUGxqUG.jpg" alt="Cartell Halloween" loading="lazy"/>
+      </div>
+      <div class="poster-card gsap-stagger-item" data-src="img/cartell-poca-aventura-v2-BsDLp8XG.jpg" data-alt="Poca Aventura v2">
+        <img src="img/cartell-poca-aventura-v2-BsDLp8XG.jpg" alt="Cartell Poca Aventura v2" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="gsap-reveal">
+      <div class="section-label">Falles 2026</div>
+      <div class="title-line"></div>
+      <h2 class="section-title">Moments <span class="accent">inoblidables</span></h2>
+    </div>
+  <div class="carousel-wrap">
+ 
+    <div class="carousel-stage" id="stage">
+ 
+      <div class="slide active">
+        <img class="slide-img" src="img/DSC_6060.JPG" alt="Slide 1" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-label">Ofrena</p>
+          <h2 class="slide-title">Recollida F.M 26</h2>
+        </div>
+      </div>
+ 
+      <div class="slide">
+        <img class="slide-img" src="img/DSC_6065.JPG" alt="Slide 2" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-label">Ofrena</p>
+          <h2 class="slide-title">Recollida F.M 26</h2>
+        </div>
+      </div>
+ 
+      <div class="slide">
+        <img class="slide-img" src="img/DSC_6066.JPG" alt="Slide 3" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-label">Ofrena</p>
+          <h2 class="slide-title">Recollida F.M 26</h2>
+        </div>
+      </div>
+ 
+      <div class="slide">
+        <img class="slide-img" src="img/DSC_6068.JPG" alt="Slide 4" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-label">Ofrena</p>
+          <h2 class="slide-title">Recollida F.M 26</h2>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img class="slide-img" src="img/DSC_6073.JPG" alt="Slide 4" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-label">Ofrena</p>
+          <h2 class="slide-title">Recollida F.M 26</h2>
+        </div>
+      </div>
+ 
+      <div class="progress-bar" id="progress"></div>
+    </div>
+ 
+    <div class="carousel-controls">
+      <button class="nav-btn" id="prev" aria-label="Anterior">
+        <i class="ti ti-chevron-left"></i>
+      </button>
+ 
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="dots" id="dots"></div>
+        <span class="counter" id="counter"></span>
+      </div>
+ 
+      <div style="display: flex; gap: 8px;">
+        <button class="play-btn" id="playBtn" aria-label="Pausar">
+          <i class="ti ti-player-pause" id="playIcon"></i>
+        </button>
+        <button class="nav-btn" id="next" aria-label="Siguiente">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+<section class="join-section">
+  <div class="container">
+    <div class="join-inner gsap-reveal">
+      <div class="section-label" style="justify-content:center;display:flex;margin-bottom:24px;">T'interessen les activitats?</div>
+      <h2 class="join-title">Apunta't i participa</h2>
+      <p class="join-desc">Fes-te faller i accedix a totes les activitats de la comissió. La millor manera de viure les Falles des de dins.</p>
+      <div class="join-actions">
+        <a href="apuntat.html" class="btn-primary magnet-btn">Apunta'm ara</a>
+        <a href="contacto.html" class="btn-ghost magnet-btn">Contacta'ns</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Tancar">✕</button>
+  <img src="" alt="" id="lightboxImg"/>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo-BKOypUWz.png" alt="Escudo"/>
+        <div class="footer-brand-name">Falla Ramiro de Maeztu · Els Lleons</div>
+        <div class="footer-brand-sub">Fundada en 1963 · València</div>
+        <p class="footer-brand-desc">Una de les comissions falleres amb més tradició i prestigi de la demarcació de València.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="mailto:fallarmaeztuleones@gmail.com" class="social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-nav-title">Navegació</div>
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+          <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+          <li><a href="activitats.html">Activitats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-title">Contacte</div>
+        <ul class="footer-nav-links">
+          <li><a href="apuntat.html">Apunta't</a></li><li><a href="contacto.html">Contacte</a></li>
+          <li><a href="mailto:fallarmaeztuleones@gmail.com">fallarmaeztuleones@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Falla Ramiro de Maeztu - Els Lleons. Tots els drets reservats.</div>
+      <div class="footer-sponsors">
+        <span class="footer-sponsor-label">Amb el suport de</span>
+        <div class="footer-sponsor-logos">
+           <img src="img/ajuntament-BGm3J81t.png" alt="Ajuntament de València">
+          <img src="img/diputacio-DWRY4cS8.jpg" alt="Diputació de València">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+(function(){
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('.poster-card').forEach(card => {
+    card.addEventListener('click', () => {
+      lbImg.src = card.dataset.src;
+      lbImg.alt = card.dataset.alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lbClose.addEventListener('click', close);
+  lb.addEventListener('click', e => { if(e.target === lb) close(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

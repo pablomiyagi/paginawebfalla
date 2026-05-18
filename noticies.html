@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Notícies de la Falla Ramiro de Maeztu - Els Lleons. Totes les novetats de l'exercici 2026/27."/>
+  <title>Notícies · Falla Ramiro de Maeztu · Els Lleons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .noticies-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+    .noticies-feed{display:flex;flex-direction:column;gap:40px}
+    /* Sidebar */
+    .noticia-sidebar{position:sticky;top:120px;display:flex;flex-direction:column;gap:20px}
+    .sidebar-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:28px}
+    .sidebar-card h3{font-family:var(--font-heading);font-size:.95rem;font-weight:600;letter-spacing:.06em;color:var(--text-primary);margin-bottom:16px}
+    .sidebar-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);background:var(--bg-surface);border:1px solid var(--border-subtle);padding:6px 12px;border-radius:100px;margin:4px;transition:color .2s ease,border-color .2s ease}
+    .sidebar-tag:hover{color:var(--fire-gold);border-color:var(--border-accent)}
+    @media(max-width:900px){.noticies-layout{grid-template-columns:1fr}.noticia-sidebar{position:static}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Els Lleons"/>
+    <div class="nav-logo-text"><strong>Els Lleons</strong>Ramiro de Maeztu</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+    <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+    <li><a href="activitats.html">Activitats</a></li><li><a href="contacto.html">Contacte</a></li>
+    <li><a href="apuntat.html" class="nav-cta">Apunta't</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Inici</a><a href="historia.html">Història</a>
+  <a href="representants.html">Representants</a><a href="noticies.html">Notícies</a>
+  <a href="activitats.html">Activitats</a><a href="contacto.html">Contacte</a>
+  <a href="apuntat.html" class="nav-cta">Apunta't</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-label">Exercici 2026 / 27</div>
+    <h1 class="page-hero-title">Les nostres <span class="fire-text">Notícies</span></h1>
+    <p class="page-hero-desc">Totes les novetats i esdeveniments de la Falla Ramiro de Maeztu - Els Lleons, al dia.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="noticies-layout">
+
+      <div class="noticies-feed">
+
+        <article class="news-article gsap-reveal">
+          <div class="news-article-header">
+            <div class="news-article-date">30 d'abril de 2026 · Falles 2027</div>
+            <h2 class="news-article-title">Retorn de Xavier Herrero per a la falla gran 2027</h2>
+            <p class="news-article-subtitle">Anunciem el retorn de Xavier Herrero per a fer la falla gran 2027.</p>
+          </div>
+          <div class="news-article-img">
+            <img src="img/xavi-herrero-fs7qxPMO.jpg" alt="Xavier Herrero" loading="lazy"/>
+          </div>
+          <div class="news-article-body">
+            <p>Anunciem el retorn de Xavier Herrero per a fer la falla gran 2027. Xavier torna a plantar a la nostra comissió i estem molt orgullosos que la nostra demarcació torne a tindre un monument amb la personalitat i l'espectacularitat que només sap donar-li a les falles Xavier.</p>
+            <p>Un artista reconegut i molt valorat al món faller per la seua professionalitat i treball. La seua forma d'entendre les falles, sempre apostant per la creativitat i el detall artístic, és una garantia d'un monument de primer nivell per a la nostra demarcació.</p>
+            <p>Des de la comissió volem expressar el nostre agraïment a Xavier per la seua confiança en nosaltres i la seua disposició a tornar a fer la nostra falla gran. Estem convençuts que el 2027 serà un any per a recordar.</p>
+          </div>
+        </article>
+
+        <article class="news-article gsap-reveal">
+          <div class="news-article-header">
+            <div class="news-article-date">17 d'abril de 2026 · Junta Directiva</div>
+            <h2 class="news-article-title">Dissolució de la Junta Directiva i elecció del President 2026/27</h2>
+            <p class="news-article-subtitle">Rafael Moreno Ripoll reelegit com a President de la nostra comissió.</p>
+          </div>
+          <div class="news-article-img1">
+            <img src="img/reeleccion-presidente-CMgewDYf.jpg" alt="Reelecció President" loading="lazy"/>
+          </div>
+          <div class="news-article-body">
+            <p>En Junta General Extraordinària celebrada el dia 17 d'abril ha sigut reelegit, com a President de la nostra comissió, <strong>Rafael Moreno Ripoll</strong>. La nostra més sincera enhorabona i molta força per a continuar afrontant els nous reptes amb la mateixa il·lusió de cara a les Falles 2027.</p>
+            <p>La junta es va dissoldre seguint els estatuts de la comissió i es va procedir a la votació per elegir el nou President per a l'exercici 2026/2027. Rafael Moreno Ripoll va presentar la seua candidatura i va obtindre el suport majoritari dels membres presents.</p>
+            <p>Des de la comissió donem les gràcies a tots els membres que han participat en l'assemblea i reafirmem el nostre compromís de seguir treballant per la nostra falla amb il·lusió i dedicació.</p>
+          </div>
+        </article>
+
+      </div><aside class="noticia-sidebar gsap-right">
+        <div class="sidebar-card">
+          <h3>Categories</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">
+            <span class="sidebar-tag">Falles 2027</span>
+            <span class="sidebar-tag">Junta Directiva</span>
+            <span class="sidebar-tag">Artistes Fallers</span>
+            <span class="sidebar-tag">Activitats</span>
+            <span class="sidebar-tag">Representants</span>
+            <span class="sidebar-tag">Història</span>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>Segueix-nos</h3>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook
+            </a>
+            <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Instagram
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo-BKOypUWz.png" alt="Escudo"/>
+        <div class="footer-brand-name">Falla Ramiro de Maeztu · Els Lleons</div>
+        <div class="footer-brand-sub">Fundada en 1963 · València</div>
+        <p class="footer-brand-desc">Una de les comissions falleres amb més tradició i prestigi de la demarcació de València.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="mailto:fallarmaeztuleones@gmail.com" class="social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-nav-title">Navegació</div>
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+          <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+          <li><a href="activitats.html">Activitats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-title">Contacte</div>
+        <ul class="footer-nav-links">
+          <li><a href="apuntat.html">Apunta't</a></li><li><a href="contacto.html">Contacte</a></li>
+          <li><a href="mailto:fallarmaeztuleones@gmail.com">fallarmaeztuleones@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Falla Ramiro de Maeztu - Els Lleons. Tots els drets reservats.</div>
+      <div class="footer-sponsors">
+        <span class="footer-sponsor-label">Amb el suport de</span>
+        <div class="footer-sponsor-logos">
+           <img src="img/ajuntament-BGm3J81t.png" alt="Ajuntament de València">
+          <img src="img/diputacio-DWRY4cS8.jpg" alt="Diputació de València">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Falla Ramiro de Maeztu - Els Lleons. Comissió fallera de València des de 1963. Bunyol d'Or i Brillants amb Fulles de Llorer Col·lectiu."/>
+  <title>Falla Ramiro de Maeztu · Els Lleons — Inici</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    /* ── HERO ──────────────────────────────────── */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px 40px 80px}
+    .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 90%,rgba(193,52,10,.18) 0%,transparent 70%),radial-gradient(ellipse 60% 40% at 50% 100%,rgba(244,140,6,.10) 0%,transparent 60%);pointer-events:none}
+    .hero-bg-glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+    .hero-glow-orb{position:absolute;border-radius:50%;filter:blur(80px)}
+    .hero-glow-orb--a{width:500px;height:500px;left:-100px;top:-50px;background:radial-gradient(circle,rgba(193,52,10,.12),transparent 70%)}
+    .hero-glow-orb--b{width:600px;height:400px;right:-150px;bottom:0;background:radial-gradient(circle,rgba(255,186,8,.08),transparent 70%)}
+    #ember-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+    .hero-content{position:relative;z-index:2;max-width:820px}
+    .hero-escudo-wrap{position:relative;z-index:2}
+    .hero-escudo{width:clamp(100px,14vw,155px);height:auto;margin:0 auto 36px;filter:drop-shadow(0 0 40px rgba(255,186,8,.35));will-change:transform;animation:glow-pulse 3.5s ease-in-out infinite}
+    .hero-badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.20em;text-transform:uppercase;color:var(--fire-gold);border:1px solid var(--border-accent);padding:8px 18px;border-radius:100px;margin-bottom:32px}
+    .hero-badge-dot{width:6px;height:6px;background:var(--fire-gold);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,4.2rem);font-weight:700;line-height:1.1;letter-spacing:.06em;color:var(--text-primary);margin-bottom:16px}
+    .hero-title .fire-text{display:block;background:linear-gradient(135deg,var(--fire-gold) 0%,var(--fire-bright) 45%,var(--fire-deep) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite}
+    .hero-subtitle{font-family:var(--font-heading);font-size:clamp(.85rem,2vw,1.05rem);letter-spacing:.18em;color:var(--text-secondary);margin-bottom:52px}
+    .hero-stats{display:flex;align-items:center;justify-content:center;margin-bottom:56px}
+    .hero-stat{text-align:center;padding:0 40px}
+    .hero-stat:not(:last-child){border-right:1px solid var(--border-subtle)}
+    .hero-stat-num{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--fire-gold);line-height:1;margin-bottom:6px}
+    .hero-stat-label{font-family:var(--font-ui);font-size:11px;letter-spacing:.15em;color:var(--text-muted);text-transform:uppercase}
+    .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px}
+    .scroll-indicator span{font-family:var(--font-ui);font-size:10px;letter-spacing:.20em;color:var(--text-muted);text-transform:uppercase}
+    .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--fire-gold),transparent);animation:scroll-line 2s ease-in-out infinite}
+    @keyframes scroll-line{0%{transform:scaleY(0) translateY(-50%);opacity:0}40%{transform:scaleY(1) translateY(0);opacity:1}100%{transform:scaleY(0) translateY(50%);opacity:0}}
+    /* ── TIMELINE ──────────────────────────────── */
+    .timeline-section{background:var(--bg-surface);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+    .timeline-intro{max-width:600px;margin-bottom:80px}
+    @media(max-width:768px){.hero-stat{padding:0 18px}.hero-stats{gap:0}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Els Lleons"/>
+    <div class="nav-logo-text"><strong>Els Lleons</strong>Ramiro de Maeztu</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inici</a></li>
+    <li><a href="historia.html">Història</a></li>
+    <li><a href="representants.html">Representants</a></li>
+    <li><a href="noticies.html">Notícies</a></li>
+    <li><a href="activitats.html">Activitats</a></li>
+    <li><a href="contacto.html">Contacte</a></li>
+    <li><a href="apuntat.html" class="nav-cta">Apunta't</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Inici</a><a href="historia.html">Història</a>
+  <a href="representants.html">Representants</a><a href="noticies.html">Notícies</a>
+  <a href="activitats.html">Activitats</a><a href="contacto.html">Contacte</a>
+  <a href="apuntat.html" class="nav-cta">Apunta't</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-bg-glow" id="heroGlow">
+    <div class="hero-glow-orb hero-glow-orb--a"></div>
+    <div class="hero-glow-orb hero-glow-orb--b"></div>
+  </div>
+  <canvas id="ember-canvas"></canvas>
+  <div class="hero-content" id="heroContent">
+    <div class="hero-escudo-wrap" id="heroEscudo">
+      <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Ramiro de Maeztu - Els Lleons" class="hero-escudo"/>
+    </div>
+    <div class="hero-badge" id="heroBadge"><span class="hero-badge-dot"></span>Comissió Fallera de València</div>
+    <h1 class="hero-title" id="heroTitle">Falla Ramiro de Maeztu<span class="fire-text">Els Lleons</span></h1>
+    <p class="hero-subtitle" id="heroSubtitle">Bunyol d'Or i Brillants amb Fulles de Llorer Col·lectiu</p>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="1963" data-suffix="" data-delay="1.2">1963</div>
+        <div class="hero-stat-label">Any de fundació</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="63" data-suffix="+" data-delay="1.4">63+</div>
+        <div class="hero-stat-label">Anys de tradició</div>
+      </div> 
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="900" data-suffix="+" data-delay="1.4">900+</div>
+        <div class="hero-stat-label">Fallers</div>
+      </div>
+    </div>
+    <div class="hero-actions" id="heroActions">
+      <a href="apuntat.html" class="btn-primary magnet-btn">Apunta't a la Falla</a>
+      <a href="historia.html" class="btn-ghost magnet-btn">La nostra història</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item hi"><span class="dot"></span>Bunyol d'Or i Brillants</div>
+    <div class="marquee-item"><span class="dot"></span>Fundada en 1963</div>
+    <div class="marquee-item hi"><span class="dot"></span>Fulles de Llorer Col·lectiu</div>
+    <div class="marquee-item"><span class="dot"></span>63 anys de tradició</div>
+    <div class="marquee-item hi"><span class="dot"></span>Falla Ramiro de Maeztu</div>
+    <div class="marquee-item"><span class="dot"></span>Els Lleons · València</div>
+    <div class="marquee-item hi"><span class="dot"></span>Xavier Herrero 2027</div>
+    <div class="marquee-item"><span class="dot"></span>Rafael Moreno Ripoll</div>
+    <div class="marquee-item hi"><span class="dot"></span>Bunyol d'Or i Brillants</div>
+    <div class="marquee-item"><span class="dot"></span>Fundada en 1963</div>
+    <div class="marquee-item hi"><span class="dot"></span>Fulles de Llorer Col·lectiu</div>
+    <div class="marquee-item"><span class="dot"></span>63 anys de tradició</div>
+    <div class="marquee-item hi"><span class="dot"></span>Falla Ramiro de Maeztu</div>
+    <div class="marquee-item"><span class="dot"></span>Els Lleons · València</div>
+    <div class="marquee-item hi"><span class="dot"></span>Xavier Herrero 2027</div>
+    <div class="marquee-item"><span class="dot"></span>Rafael Moreno Ripoll</div>
+  </div>
+</div>
+
+<section class="timeline-section">
+  <div class="container">
+    <div class="timeline-intro gsap-reveal">
+      <div class="section-label">La nostra Història</div>
+      <div class="title-line"></div>
+      <h2 class="section-title">Més de 60 anys de <span class="accent">tradició</span></h2>
+      <p class="section-desc">Des de la nostra fundació en 1963, hem construït una de les trajectòries falleres més riques de la demarcació.</p>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline-line"><div class="timeline-line-progress" id="timelineProgress"></div></div>
+      <div class="timeline-item" data-timeline-item>
+        <div class="timeline-content">
+          <div class="timeline-year">1963</div>
+          <h3 class="timeline-event-title">Fundació de la Comissió</h3>
+          <p class="timeline-event-desc">Naix la Falla Ramiro de Maeztu - Els Lleons, encapçalada per D. Julián Roy Morales, amb el nom inicial de Ramiro de Maeztu – Floresta i Adjacents.</p>
+          <span class="timeline-tag">Fundació</span>
+        </div>
+        <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+      <div class="timeline-item" data-timeline-item>
+        <div class="timeline-empty"></div>
+        <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2007</div>
+          <h3 class="timeline-event-title">1r Premi Secció Primera B</h3>
+          <p class="timeline-event-desc">De la mà d'Alejandro Santaeulalia, aconseguim el màxim guardó artístic del nostre trànssit fins al moment. Una falla de gran mèrit artístic.</p>
+          <span class="timeline-tag">Guardó artístic</span>
+        </div>
+      </div>
+      <div class="timeline-item" data-timeline-item>
+        <div class="timeline-content">
+          <div class="timeline-year">2020</div>
+          <h3 class="timeline-event-title">Carla Garcia, FMI de València</h3>
+          <p class="timeline-event-desc">La nostra Fallera Major Infantil representa la comissió com a FMI de la ciutat de València, portant els nostres colors als màxims honors de la festa.</p>
+          <span class="timeline-tag">Moment Històric</span>
+        </div>
+        <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+      <div class="timeline-item" data-timeline-item>
+        <div class="timeline-empty"></div>
+        <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2026-actualitat</div>
+          <h3 class="timeline-event-title">Bunyol d'Or i Brillants Col·lectiu</h3>
+          <p class="timeline-event-desc">Ostentem el màxim guardó col·lectiu de la JCF. Xavier Herrero planta el 2027. Rafael Moreno Ripoll lidera la comissió amb força renovada.</p>
+          <span class="timeline-tag">Actualitat</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:72px;" class="gsap-reveal">
+      <a href="historia.html" class="btn-ghost magnet-btn">Llegir la història completa</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="gsap-reveal">
+      <div class="section-label">Arxiu Fotogràfic</div>
+      <div class="title-line"></div>
+      <h2 class="section-title">Moments <span class="accent">inoblidables</span></h2>
+    </div>
+    <div class="media-grid gsap-stagger">
+      <a href="https://photos.app.goo.gl/oieqYhfX7TFRKs5K6" target="_blank" rel="noopener" class="media-card gsap-stagger-item">
+        <div class="media-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="media-card-label">Galeria · 2026</div>
+        <div class="media-card-title">Resum Visual Falles 2026</div>
+        <div class="media-card-arrow">Veure àlbum <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://photos.google.com/share/AF1QipOWC027r64rm7cB2K-6DZGzANDgAGaSIbLd2Os3j7zZW-bnLb8N82wI9iTpSk3nBQ?key=VXc4aWZzSUs1NjE0bUx0eWV2QlB2aTRnMTRxVzJ3" target="_blank" rel="noopener" class="media-card gsap-stagger-item">
+        <div class="media-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="media-card-label">Fallera Major Infantil</div>
+        <div class="media-card-title">Carla Garcia · FMI València 2020</div>
+        <div class="media-card-arrow">Veure àlbum <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="apuntat.html" class="media-card gsap-stagger-item">
+        <div class="media-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="media-card-label">Exercici 2026</div>
+        <div class="media-card-title">Consulta les quotes i apunta't</div>
+        <div class="media-card-arrow">Veure detalls <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="honor-banner gsap-reveal">
+  <div class="honor-text">
+    <strong>Bunyol d'Or i Brillants amb Fulles de Llorer Col·lectiu</strong>
+    El màxim guardó col·lectiu atorgat per la Junta Central Fallera de València
+  </div>
+</div>
+
+<section class="join-section">
+  <div class="container">
+    <div class="join-inner gsap-reveal">
+      <div class="section-label" style="justify-content:center;display:flex;margin-bottom:24px;">Forma part de la família</div>
+      <h2 class="join-title">Uneix-te als<br>Els Lleons</h2>
+      <p class="join-desc">Forma part d'una de les comissions falleres amb més història i prestigi de València. Tradició, amistat i passió per les Falles.</p>
+      <div class="join-actions">
+        <a href="apuntat.html" class="btn-primary magnet-btn">Apunta'm ara</a>
+        <a href="contacto.html" class="btn-ghost magnet-btn">Contacta'ns</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo-BKOypUWz.png" alt="Escudo"/>
+        <div class="footer-brand-name">Falla Ramiro de Maeztu · Els Lleons</div>
+        <div class="footer-brand-sub">Fundada en 1963 · València</div>
+        <p class="footer-brand-desc">Una de les comissions falleres amb més tradició i prestigi de la demarcació de València.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="mailto:fallarmaeztuleones@gmail.com" class="social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-nav-title">Navegació</div>
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+          <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+          <li><a href="activitats.html">Activitats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-title">Contacte</div>
+        <ul class="footer-nav-links">
+          <li><a href="apuntat.html">Apunta't</a></li><li><a href="contacto.html">Contacte</a></li>
+          <li><a href="mailto:fallarmaeztuleones@gmail.com">fallarmaeztuleones@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Falla Ramiro de Maeztu - Els Lleons. Tots els drets reservats.</div>
+      <div class="footer-sponsors">
+        <span class="footer-sponsor-label">Amb el suport de</span>
+        <div class="footer-sponsor-logos">
+           <img src="img/ajuntament-BGm3J81t.png" alt="Ajuntament de València">
+          <img src="img/diputacio-DWRY4cS8.jpg" alt="Diputació de València">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

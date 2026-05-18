@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apunta't - Falla Ramiro de Maeztu - Els Lleons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/escudo-BKOypUWz.png" alt="Escudo Falla Els Lleons"/>
+    <div class="nav-logo-text"><strong>Els Lleons</strong>Ramiro de Maeztu</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inici</a></li>
+    <li><a href="historia.html">Història</a></li>
+    <li><a href="representants.html">Representants</a></li>
+    <li><a href="noticies.html">Notícies</a></li>
+    <li><a href="activitats.html">Activitats</a></li>
+    <li><a href="contacto.html">Contacte</a></li>
+    <li><a href="apuntat.html" class="nav-cta">Apunta't</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Inici</a><a href="historia.html">Història</a>
+  <a href="representants.html">Representants</a><a href="noticies.html">Notícies</a>
+  <a href="activitats.html">Activitats</a><a href="contacto.html">Contacte</a>
+  <a href="apuntat.html" class="nav-cta">Apunta't</a>
+</div>
+    <section class="page-hero">
+        <div class="container">
+            <span class="page-hero-label">Fes-te faller</span>
+            <h1 class="page-hero-title">
+                <span class="fire-text">APUNTA'T</span>
+            </h1>
+            <p class="page-hero-desc">Forma part de la nostra història i viu la millor festa del món des de dins.</p>
+        </div>
+    </section>
+
+    <section class="apuntat-section">
+        <div class="container">
+            <div class="apuntat-layout">
+                
+                <div class="apuntat-info gsap-left">
+                    <div class="section-label">Per què unir-te?</div>
+                    <h2 class="section-title">Viure la <span class="accent">Festa</span></h2>
+                    <div class="title-line"></div>
+                    
+                    <div class="value-list gsap-stagger">
+                        <div class="value-item gsap-stagger-item">
+                            <div class="value-item-text">
+                                <strong>Accés al Casal</strong>
+                                Gaudix de totes les activitats i sopars durant tot l'any.
+                            </div>
+                        </div>
+                        <div class="value-item gsap-stagger-item">
+                            <div class="value-item-text">
+                                <strong>Cultura i Tradició</strong>
+                                Participa en presentacions, ofrenes i actes oficials.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="normes-box gsap-reveal">
+                        <h4>Quotes</h4>
+                        <p>Disposem de preus adaptats per a totes les edats i nuclis familiars.</p>
+                        <img src="img/cuotas-BjSGKaZM.jpg" alt="Informació de quotes">
+                    </div>
+                </div>
+
+                <div class="apuntat-cta-block gsap-reveal">
+                    <h3>Sol·licitud d'Alta</h3>
+                    <p>Emplena el formulari i ens posarem en contacte amb tu.</p>
+                    
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label class="form-label">Nom i Cognoms</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label class="form-label">DNI / NIE</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Telèfon</label>
+                                <input type="tel" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipus de quota</label>
+                            <input type="text" class="form-input" placeholder="Quota anual general">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">IBAN (Compte bancari)</label>
+                            <input type="text" class="form-input" placeholder="ES00 0000 0000...">
+                        </div>
+
+                        <button type="submit" class="btn-primary magnet-btn" style="width: 100%;">ENVIAR SOL·LICITUD</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo-BKOypUWz.png" alt="Escudo"/>
+        <div class="footer-brand-name">Falla Ramiro de Maeztu · Els Lleons</div>
+        <div class="footer-brand-sub">Fundada en 1963 · València</div>
+        <p class="footer-brand-desc">Una de les comissions falleres amb més tradició i prestigi de la demarcació de València.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/fallarmaeztuleones" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fallaramirodemaeztuleones/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="mailto:fallarmaeztuleones@gmail.com" class="social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-nav-title">Navegació</div>
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Inici</a></li><li><a href="historia.html">Història</a></li>
+          <li><a href="representants.html">Representants</a></li><li><a href="noticies.html">Notícies</a></li>
+          <li><a href="activitats.html">Activitats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-title">Contacte</div>
+        <ul class="footer-nav-links">
+          <li><a href="apuntat.html">Apunta't</a></li><li><a href="contacto.html">Contacte</a></li>
+          <li><a href="mailto:fallarmaeztuleones@gmail.com">fallarmaeztuleones@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Falla Ramiro de Maeztu - Els Lleons. Tots els drets reservats.</div>
+      <div class="footer-sponsors">
+        <span class="footer-sponsor-label">Amb el suport de</span>
+        <div class="footer-sponsor-logos">
+          <img src="img/ajuntament-BGm3J81t.png" alt="Ajuntament de València">
+          <img src="img/diputacio-DWRY4cS8.jpg" alt="Diputació de València">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
