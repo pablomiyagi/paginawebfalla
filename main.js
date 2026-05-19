@@ -423,3 +423,4 @@
     // Iniciar
     updateUI(0);
     startProgress();
+    
