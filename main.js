@@ -424,3 +424,348 @@
     updateUI(0);
     startProgress();
     
+/* ════════════════════════════════════════════════════════
+   PETARDS ENGINE — Falla Ramiro de Maeztu · Els Lleons
+   Canvas fireworks + Web Audio synthesised cracker sounds
+════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ─── Canvas setup ─────────────────────────────────── */
+  const cvs = document.createElement('canvas');
+  cvs.id    = 'petards-canvas';
+  document.body.appendChild(cvs);
+  const ctx = cvs.getContext('2d');
+
+  const resize = () => { cvs.width = window.innerWidth; cvs.height = window.innerHeight; };
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  /* ─── Colour palette (fire + festive) ──────────────── */
+  const PALETTES = [
+    ['#FFBA08','#FFD54F','#FFF176','#FFE082'],   // gold
+    ['#F48C06','#FF7B2B','#FFBA08','#C1340A'],   // fire
+    ['#E85D04','#FF4444','#FF8C00','#FFD700'],   // ember
+    ['#00E5FF','#80D8FF','#FFFFFF','#B0E0FF'],   // icy blue
+    ['#FF4FC8','#FF8AE2','#FFBA08','#FFFFFF'],   // pink burst
+    ['#B9F70A','#FFFF00','#FFBA08','#FFFFFF'],   // lime-gold
+  ];
+
+  /* ─── Particle class ────────────────────────────────── */
+  class Particle {
+    constructor(x, y, color, angle, speed, type) {
+      this.x  = x; this.y  = y; this.color = color;
+      this.vx = Math.cos(angle) * speed;
+      this.vy = Math.sin(angle) * speed;
+      this.alpha = 1;
+      this.gravity = type === 'tail' ? 0.06 : 0.12;
+      this.decay   = type === 'tail' ? 0.018 : (Math.random() * 0.014 + 0.012);
+      this.radius  = type === 'tail' ? Math.random() * 1.5 + 0.5 : Math.random() * 3 + 1;
+      this.friction = 0.975;
+      this.tail    = type === 'tail';
+      this.sparkle = Math.random() < 0.4; // some particles twinkle
+      this.twinklePhase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.vx *= this.friction;
+      this.vy *= this.friction;
+      this.vy += this.gravity;
+      this.x  += this.vx;
+      this.y  += this.vy;
+      this.alpha -= this.decay;
+      this.twinklePhase += 0.3;
+    }
+    draw() {
+      const a = this.sparkle
+        ? this.alpha * (0.6 + 0.4 * Math.abs(Math.sin(this.twinklePhase)))
+        : this.alpha;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, a);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle   = this.color;
+      ctx.shadowColor = this.color;
+      ctx.shadowBlur  = this.radius * (this.tail ? 4 : 8);
+      ctx.fill();
+      ctx.restore();
+    }
+    get dead() { return this.alpha <= 0; }
+  }
+
+  /* ─── Firework class ────────────────────────────────── */
+  class Firework {
+    constructor(x, y) {
+      this.x = x; this.y = y;
+      this.palette  = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+      this.particles = [];
+      this.done = false;
+      this._burst();
+    }
+    _burst() {
+      const count  = Math.floor(Math.random() * 60 + 80);
+      const type   = Math.random();
+
+      for (let i = 0; i < count; i++) {
+        let angle, speed;
+        if (type < 0.35) {
+          // Radial burst
+          angle = (i / count) * Math.PI * 2;
+          speed = Math.random() * 5 + 3;
+        } else if (type < 0.65) {
+          // Random scatter
+          angle = Math.random() * Math.PI * 2;
+          speed = Math.random() * 7 + 2;
+        } else {
+          // Ring pattern
+          angle = (i / count) * Math.PI * 2;
+          speed = 5 + (i % 3) * 1.5;
+        }
+        const color = this.palette[Math.floor(Math.random() * this.palette.length)];
+        this.particles.push(new Particle(this.x, this.y, color, angle, speed, 'burst'));
+      }
+
+      // Trailing sparkles
+      const tailCount = Math.floor(Math.random() * 20 + 15);
+      for (let i = 0; i < tailCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 2 + 0.5;
+        const color = '#FFFFFF';
+        this.particles.push(new Particle(this.x, this.y, color, angle, speed, 'tail'));
+      }
+    }
+    update() {
+      this.particles = this.particles.filter(p => !p.dead);
+      this.particles.forEach(p => p.update());
+      if (!this.particles.length) this.done = true;
+    }
+    draw() { this.particles.forEach(p => p.draw()); }
+  }
+
+  /* ─── Rocket (ascending trail) ──────────────────────── */
+  class Rocket {
+    constructor() {
+      const margin = window.innerWidth * 0.15;
+      this.x    = margin + Math.random() * (window.innerWidth  - margin * 2);
+      this.y    = window.innerHeight + 10;
+      this.tx   = this.x + (Math.random() - 0.5) * 120;
+      this.ty   = window.innerHeight * (0.10 + Math.random() * 0.40);
+      this.speed = Math.random() * 5 + 8;
+      this.trail = [];
+      this.done  = false;
+      this.exploded = false;
+      const pal = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+      this.color = pal[0];
+    }
+    update(fireworks) {
+      if (this.exploded) { this.done = true; return; }
+      const dx  = this.tx - this.x;
+      const dy  = this.ty - this.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < this.speed) {
+        // Arrived — explode!
+        fireworks.push(new Firework(this.x, this.y));
+        playCracker();
+        this.exploded = true;
+        return;
+      }
+
+      const nx = dx / dist;
+      const ny = dy / dist;
+      this.x += nx * this.speed;
+      this.y += ny * this.speed;
+
+      this.trail.push({ x: this.x, y: this.y, alpha: 1 });
+      if (this.trail.length > 14) this.trail.shift();
+    }
+    draw() {
+      this.trail.forEach((pt, i) => {
+        const a = (i / this.trail.length) * 0.7;
+        ctx.save();
+        ctx.globalAlpha = a;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle   = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur  = 8;
+        ctx.fill();
+        ctx.restore();
+      });
+    }
+  }
+
+  /* ─── Web Audio cracker sound ───────────────────────── */
+  let audioCtx = null;
+  function getAudioCtx() {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch(e) { return null; }
+    }
+    return audioCtx;
+  }
+
+  function playCracker() {
+    const ac = getAudioCtx();
+    if (!ac) return;
+
+    /* ── KEY FIX: browsers start AudioContext suspended.
+       Always resume before playing — works even mid-auto-animation. ── */
+    const doPlay = () => {
+      const now = ac.currentTime;
+      const TYPES = ['sharp', 'soft', 'whistle'];
+      const type  = TYPES[Math.floor(Math.random() * TYPES.length)];
+
+      if (type === 'sharp') {
+        // Sharp crack — white-noise burst
+        const bufLen = ac.sampleRate * 0.18;
+        const buf    = ac.createBuffer(1, bufLen, ac.sampleRate);
+        const data   = buf.getChannelData(0);
+        for (let i = 0; i < bufLen; i++)
+          data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufLen, 2.8);
+
+        const src = ac.createBufferSource();
+        src.buffer = buf;
+
+        const gain = ac.createGain();
+        gain.gain.setValueAtTime(0.55 + Math.random() * 0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+        const bpf = ac.createBiquadFilter();
+        bpf.type = 'bandpass';
+        bpf.frequency.value = 1800 + Math.random() * 1200;
+        bpf.Q.value = 0.5;
+
+        src.connect(bpf); bpf.connect(gain); gain.connect(ac.destination);
+        src.start(now); src.stop(now + 0.22);
+
+      } else if (type === 'soft') {
+        // Softer boom — low freq + decay
+        const osc  = ac.createOscillator();
+        const gain = ac.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(120 + Math.random() * 80, now);
+        osc.frequency.exponentialRampToValueAtTime(40, now + 0.4);
+        gain.gain.setValueAtTime(0.45, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc.connect(gain); gain.connect(ac.destination);
+        osc.start(now); osc.stop(now + 0.5);
+
+        // Layer noise on top
+        const bufLen = ac.sampleRate * 0.12;
+        const buf    = ac.createBuffer(1, bufLen, ac.sampleRate);
+        const nd     = buf.getChannelData(0);
+        for (let i = 0; i < bufLen; i++) nd[i] = (Math.random() * 2 - 1) * (1 - i / bufLen);
+        const nsrc  = ac.createBufferSource();
+        nsrc.buffer = buf;
+        const ngain = ac.createGain();
+        ngain.gain.setValueAtTime(0.25, now);
+        ngain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        nsrc.connect(ngain); ngain.connect(ac.destination);
+        nsrc.start(now); nsrc.stop(now + 0.15);
+
+      } else {
+        // Whistle + pop — rising tone + sharp hit
+        const osc  = ac.createOscillator();
+        const gain = ac.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.linearRampToValueAtTime(2200, now + 0.25);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.connect(gain); gain.connect(ac.destination);
+        osc.start(now); osc.stop(now + 0.3);
+
+        // Pop at the end
+        const popDelay = 0.24;
+        const bufLen2  = ac.sampleRate * 0.1;
+        const buf2     = ac.createBuffer(1, bufLen2, ac.sampleRate);
+        const pd2      = buf2.getChannelData(0);
+        for (let i = 0; i < bufLen2; i++) pd2[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufLen2, 3);
+        const psrc  = ac.createBufferSource();
+        psrc.buffer = buf2;
+        const pgain = ac.createGain();
+        pgain.gain.setValueAtTime(0.5, now + popDelay);
+        pgain.gain.exponentialRampToValueAtTime(0.001, now + popDelay + 0.1);
+        psrc.connect(pgain); pgain.connect(ac.destination);
+        psrc.start(now + popDelay); psrc.stop(now + popDelay + 0.15);
+      }
+    };
+
+    if (ac.state === 'suspended') {
+      ac.resume().then(doPlay).catch(() => {});
+    } else {
+      doPlay();
+    }
+  }
+
+  /* ─── Main loop ─────────────────────────────────────── */
+  let rockets   = [];
+  let fireworks = [];
+  let animId;
+
+  const loop = () => {
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    rockets.forEach(r => { r.update(fireworks); r.draw(); });
+    fireworks.forEach(f => { f.update(); f.draw(); });
+    rockets   = rockets.filter(r => !r.done);
+    fireworks = fireworks.filter(f => !f.done);
+    animId = requestAnimationFrame(loop);
+  };
+  document.addEventListener('visibilitychange', () =>
+    document.hidden ? cancelAnimationFrame(animId) : loop()
+  );
+  loop();
+
+  /* ─── Launch a rocket ───────────────────────────────── */
+  function launchRocket() {
+    rockets.push(new Rocket());
+  }
+
+  /* ─── Auto-launch scheduler ──────────────────────────── */
+  let autoTimer = null;
+
+  function scheduleNext() {
+    const delay = 3500 + Math.random() * 5000; // 3.5–8.5 s
+    autoTimer = setTimeout(() => {
+      launchRocket();
+      // Sometimes launch 2 in quick succession
+      if (Math.random() < 0.3) {
+        setTimeout(launchRocket, 400 + Math.random() * 600);
+      }
+      scheduleNext();
+    }, delay);
+  }
+
+  scheduleNext();
+
+  /* ─── Manual trigger button ─────────────────────────── */
+  const btn = document.createElement('button');
+  btn.id          = 'petard-btn';
+  btn.title       = 'Llança petards!';
+  btn.innerHTML   = '🎆';
+  btn.setAttribute('aria-label', 'Llança petards');
+  document.body.appendChild(btn);
+
+  btn.addEventListener('click', () => {
+    // Unlock + resume audio context on user interaction
+    const ac = getAudioCtx();
+    if (ac && ac.state === 'suspended') ac.resume().catch(() => {});
+    // Salvo of 3–5 rockets
+    const n = Math.floor(Math.random() * 3 + 3);
+    for (let i = 0; i < n; i++) {
+      setTimeout(launchRocket, i * 280);
+    }
+  });
+
+  /* ─── Click anywhere fires a petard from that spot ─── */
+  document.addEventListener('click', e => {
+    // Ignore clicks on the btn itself or interactive elements
+    if (e.target.closest('#petard-btn, a, button, input, textarea, select, label, .lightbox')) return;
+    const ac = getAudioCtx();
+    if (ac && ac.state === 'suspended') ac.resume().catch(() => {});
+    // Direct explosion at click point (no rocket)
+    fireworks.push(new Firework(e.clientX, e.clientY));
+    playCracker();
+  });
+
+})();
